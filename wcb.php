@@ -19,6 +19,7 @@
  * Version:           1.0.0
  * Author:            Ahmad Wael
  * Author URI:        https://github.com/DevWael
+ * GitHub URI:        https://github.com/DevWael/wooc-bookings
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       wcb
@@ -83,3 +84,15 @@ function run_wcb() {
 }
 
 run_wcb();
+
+/**
+ * Plugin update checker
+ */
+require WCB_DIR . 'packages/puc-4.10/plugin-update-checker.php';
+Puc_v4p10_Factory::buildFromHeader(
+	__FILE__,
+	array(
+		'slug'        => 'wooc-bookings',
+		'checkPeriod' => 12,
+	)
+);
