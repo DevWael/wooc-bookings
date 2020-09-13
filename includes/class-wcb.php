@@ -13,6 +13,9 @@
  * @subpackage Wcb/includes
  */
 
+use Booking_System\PostTypes\Booking_Items;
+use Booking_System\PostTypes\Bookings;
+
 /**
  * The core plugin class.
  *
@@ -79,6 +82,8 @@ class Wcb {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->load_acf();
+		$this->booking_items();
+		$this->bookings();
 
 	}
 
@@ -148,6 +153,18 @@ class Wcb {
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
+	}
+
+	private function booking_items() {
+		$booking = new Booking_Items();
+
+		$this->loader->add_action( 'init', $booking, 'register' );
+	}
+
+	private function bookings() {
+		$booking = new Bookings();
+
+		$this->loader->add_action( 'init', $booking, 'register' );
 	}
 
 	/**

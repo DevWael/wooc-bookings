@@ -41,6 +41,22 @@ define( 'WCB_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCB_URL', plugin_dir_url( __FILE__ ) );
 
 /**
+ * Classes autoloader
+ */
+try {
+	spl_autoload_register( function ( $class_name ) {
+		$classes_dir = WCB_DIR . DIRECTORY_SEPARATOR . 'Booking_System' . DIRECTORY_SEPARATOR;
+		$class_file  = str_replace( 'Booking_System', '', $class_name ) . '.php';
+		$class       = $classes_dir . str_replace( '\\', '/', $class_file );
+		if ( file_exists( $class ) ) {
+			require_once $class;
+		}
+	} );
+} catch ( Exception $e ) {
+	return false;
+}
+
+/**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wcb-activator.php
  */
