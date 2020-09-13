@@ -35,7 +35,7 @@ class Wcb {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Wcb_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Wcb_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +44,7 @@ class Wcb {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
@@ -53,7 +53,7 @@ class Wcb {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -78,6 +78,7 @@ class Wcb {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->load_acf();
 
 	}
 
@@ -116,6 +117,8 @@ class Wcb {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wcb-admin.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/ACF_Integrate.php';
+
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
@@ -124,6 +127,10 @@ class Wcb {
 
 		$this->loader = new Wcb_Loader();
 
+	}
+
+	private function load_acf() {
+		new ACF_Integrate( $this->get_plugin_name(), $this->get_version() );
 	}
 
 	/**
@@ -188,8 +195,8 @@ class Wcb {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
@@ -198,8 +205,8 @@ class Wcb {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    Wcb_Loader    Orchestrates the hooks of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -208,8 +215,8 @@ class Wcb {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_version() {
 		return $this->version;

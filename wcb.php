@@ -36,13 +36,15 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'WCB_VERSION', '1.0.0' );
+define( 'WCB_DIR', plugin_dir_path( __FILE__ ) );
+define( 'WCB_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wcb-activator.php
  */
 function activate_wcb() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wcb-activator.php';
+	require_once WCB_DIR . 'includes/class-wcb-activator.php';
 	Wcb_Activator::activate();
 }
 
@@ -51,7 +53,7 @@ function activate_wcb() {
  * This action is documented in includes/class-wcb-deactivator.php
  */
 function deactivate_wcb() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wcb-deactivator.php';
+	require_once WCB_DIR . 'includes/class-wcb-deactivator.php';
 	Wcb_Deactivator::deactivate();
 }
 
@@ -62,7 +64,7 @@ register_deactivation_hook( __FILE__, 'deactivate_wcb' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-wcb.php';
+require WCB_DIR . 'includes/class-wcb.php';
 
 /**
  * Begins execution of the plugin.
@@ -79,4 +81,5 @@ function run_wcb() {
 	$plugin->run();
 
 }
+
 run_wcb();
