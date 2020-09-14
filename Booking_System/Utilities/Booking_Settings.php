@@ -36,7 +36,7 @@ class Booking_Settings {
 		return get_field( 'extra_person_price', $this->booking_id );
 	}
 
-	public function get_available_dates() {
+	public function get_available_days() {
 		return get_field( 'allowed_dates', $this->booking_id );
 	}
 

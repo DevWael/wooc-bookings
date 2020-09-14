@@ -27,7 +27,7 @@ class Wcb_Public {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string $plugin_name The ID of this plugin.
 	 */
 	private $plugin_name;
 
@@ -36,21 +36,24 @@ class Wcb_Public {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @var      string $version The current version of this plugin.
 	 */
 	private $version;
+
+	private $product_id;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
+	 * @param string $plugin_name The name of the plugin.
+	 * @param string $version The version of this plugin.
+	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
 
@@ -72,6 +75,10 @@ class Wcb_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+
+		if ( is_singular( 'product' ) ) {
+			wp_enqueue_style( 'wcb_flat_piker', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css' );
+		}
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wcb-public.css', array(), $this->version, 'all' );
 
@@ -95,7 +102,9 @@ class Wcb_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		if ( is_singular( 'product' ) ) {
+			wp_enqueue_script( 'wcb_flat_piker_js', 'https://cdn.jsdelivr.net/npm/flatpickr', array( 'jquery' ), '4.5' );
+		}
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wcb-public.js', array( 'jquery' ), $this->version, false );
 
 	}

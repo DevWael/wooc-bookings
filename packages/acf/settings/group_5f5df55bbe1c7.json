@@ -111,7 +111,8 @@
                 "Tuesday": "Tuesday",
                 "Wednesday": "Wednesday",
                 "Thursday": "Thursday",
-                "Friday": "Friday"
+                "Friday": "Friday",
+                "Saturday": "Saturday"
             },
             "allow_custom": 0,
             "default_value": [],
@@ -172,5 +173,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1600069651
+    "modified": 1600087033
 }

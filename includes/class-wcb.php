@@ -172,6 +172,7 @@ class Wcb {
 		$product = new \Booking_System\WC\Product();
 
 		$this->loader->add_action( 'woocommerce_before_add_to_cart_form', $product, 'booking_form' );
+		$this->loader->add_filter( 'woocommerce_product_single_add_to_cart_text', $product, 'book_now',10,1 );
 	}
 
 	/**
