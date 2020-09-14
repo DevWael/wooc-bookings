@@ -13,8 +13,8 @@
  * @subpackage Wcb/includes
  */
 
-use Booking_System\PostTypes\Booking_Items;
-use Booking_System\PostTypes\Bookings;
+use Booking_System\PostTypes\Booking_Items_Post_Type;
+use Booking_System\PostTypes\Bookings_Post_Type;
 
 /**
  * The core plugin class.
@@ -84,6 +84,7 @@ class Wcb {
 		$this->load_acf();
 		$this->booking_items();
 		$this->bookings();
+		$this->product_booking_form();
 
 	}
 
@@ -156,15 +157,21 @@ class Wcb {
 	}
 
 	private function booking_items() {
-		$booking = new Booking_Items();
+		$booking = new Booking_Items_Post_Type();
 
 		$this->loader->add_action( 'init', $booking, 'register' );
 	}
 
 	private function bookings() {
-		$booking = new Bookings();
+		$booking = new Bookings_Post_Type();
 
 		$this->loader->add_action( 'init', $booking, 'register' );
+	}
+
+	private function product_booking_form() {
+		$product = new \Booking_System\WC\Product();
+
+		$this->loader->add_action( 'woocommerce_before_add_to_cart_form', $product, 'booking_form' );
 	}
 
 	/**

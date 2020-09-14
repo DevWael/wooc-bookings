@@ -2,14 +2,14 @@
 
 namespace Booking_System\PostTypes;
 
-class Booking_Items {
+class Bookings_Post_Type {
 
-	protected $post_type_id = 'wcb-booking-items';
+	protected $post_type_id = 'wcb-bookings';
 
 	protected function labels() {
 		return array(
-			'name'          => __( 'Booking items', 'wcb' ),
-			'singular_name' => __( 'Booking item', 'wcb' ),
+			'name'          => __( 'Bookings', 'wcb' ),
+			'singular_name' => __( 'Booking', 'wcb' ),
 		);
 	}
 
