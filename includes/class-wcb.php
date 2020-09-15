@@ -172,7 +172,10 @@ class Wcb {
 		$product = new \Booking_System\WC\Product();
 
 		$this->loader->add_action( 'woocommerce_before_add_to_cart_form', $product, 'booking_form' );
-		$this->loader->add_filter( 'woocommerce_product_single_add_to_cart_text', $product, 'book_now',10,1 );
+		$this->loader->add_filter( 'woocommerce_is_sold_individually', $product, 'remove_quantity',10,2 );
+		$this->loader->add_filter( 'woocommerce_product_add_to_cart_url', $product, 'redirect_to_checkout',10,2 );
+		$this->loader->add_filter( 'woocommerce_product_single_add_to_cart_text', $product, 'book_now_text',10,1 );
+		$this->loader->add_filter( 'add_to_cart_redirect', $product, 'cart_redirect_checkout',10,1 );
 	}
 
 	/**
