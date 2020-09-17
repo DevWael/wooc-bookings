@@ -193,6 +193,7 @@ class Wcb {
 		$checkout = new \Booking_System\WC\Checkout();
 
 		$this->loader->add_filter( 'woocommerce_available_payment_gateways', $checkout, 'disable_cod_on_booking', 10, 1 );
+		$this->loader->add_filter( 'woocommerce_cart_needs_shipping_address', $checkout, 'disable_shipping_fields', 10, 1 );
 	}
 
 	private function order_data() {
