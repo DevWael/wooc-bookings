@@ -191,7 +191,7 @@ class Wcb {
 	private function order_data() {
 		$order_data = new \Booking_System\WC\Order();
 		$this->loader->add_action( 'woocommerce_checkout_create_order_line_item', $order_data, 'order_data', 10, 4 );
-//		$this->loader->add_filter( 'woocommerce_order_item_name', $order_data, 'order_email_data', 10, 2 );
+		$this->loader->add_filter( 'woocommerce_order_item_name', $order_data, 'order_email_data', 10, 2 );
 	}
 
 	/**
