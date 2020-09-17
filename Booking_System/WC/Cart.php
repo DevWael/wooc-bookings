@@ -126,8 +126,6 @@ class Cart {
 					'value' => wc_clean( $extra_price . ' ' . get_woocommerce_currency_symbol() )
 				);
 			}
-
-
 		}
 
 		return $item_data;
