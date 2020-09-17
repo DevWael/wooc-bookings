@@ -35,7 +35,15 @@ class Product {
 	}
 
 	function cart_redirect_checkout( $url ) {
-		return wc_get_checkout_url();
+		if ( ! isset( $_REQUEST['add-to-cart'] ) || ! is_numeric( $_REQUEST['add-to-cart'] ) ) {
+			return $url;
+		}
+		$product_id = apply_filters( 'woocommerce_add_to_cart_product_id', absint( $_REQUEST['add-to-cart'] ) );
+		if ( get_field( 'bookable', $product_id ) ) {
+			return wc_get_checkout_url();
+		}
+
+		return $url;
 	}
 
 	function redirect_to_checkout( $add_to_cart_url, $product ) { //todo check this
