@@ -86,6 +86,7 @@ class Wcb {
 		$this->bookings();
 		$this->product_booking_form();
 		$this->cart_process();
+		$this->checkout_customizations();
 		$this->order_data();
 
 	}
@@ -184,8 +185,14 @@ class Wcb {
 		$cart = new \Booking_System\WC\Cart();
 		$this->loader->add_filter( 'woocommerce_add_cart_item_data', $cart, 'add_cart_item_data', 10, 3 );
 		$this->loader->add_filter( 'woocommerce_add_to_cart_validation', $cart, 'validate_cart_data', 10, 4 );
-		$this->loader->add_filter( 'woocommerce_before_calculate_totals', $cart, 'calculate_cart_total', 25, 3  );
+		$this->loader->add_filter( 'woocommerce_before_calculate_totals', $cart, 'calculate_cart_total', 25, 3 );
 		$this->loader->add_filter( 'woocommerce_get_item_data', $cart, 'display_cart_data', 10, 2 );
+	}
+
+	private function checkout_customizations() {
+		$checkout = new \Booking_System\WC\Checkout();
+
+		$this->loader->add_filter( 'woocommerce_available_payment_gateways', $checkout, 'disable_cod_on_booking', 10, 1 );
 	}
 
 	private function order_data() {
