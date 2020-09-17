@@ -122,7 +122,7 @@ class Cart {
 				$extra_persons = $persons_count - $max_persons;
 				$extra_price   = $person_price * $extra_persons;
 				$item_data[]   = array(
-					'key'   => '- ' . __( 'Extra Persons Price:', 'wcb' ),
+					'key'   => '- ' . __( 'Extra Persons Price', 'wcb' ),
 					'value' => wc_clean( $extra_price . ' ' . get_woocommerce_currency_symbol() )
 				);
 			}
