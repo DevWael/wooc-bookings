@@ -85,4 +85,51 @@ class Cart {
 			}
 		}
 	}
+
+	/**
+	 * display custom option data on cart item
+	 *
+	 * @param $item_data
+	 * @param $cart_item_data
+	 *
+	 * @return mixed
+	 */
+	public function display_cart_data( $item_data, $cart_item_data ) {
+		if ( isset( $cart_item_data['booking_date'] ) ) {
+			$item_data[] = array(
+				'key'   => '- ' . __( 'Booking Date', 'wcb' ),
+				'value' => wc_clean( $cart_item_data['booking_date'] )
+			);
+		}
+		if ( isset( $cart_item_data['booking_time'] ) ) {
+			$item_data[] = array(
+				'key'   => '- ' . __( 'Booking Time', 'wcb' ),
+				'value' => wc_clean( $cart_item_data['booking_time'] . ':00 ' . __( 'PM', 'wcb' ) )
+			);
+		}
+		if ( isset( $cart_item_data['persons_count'] ) ) {
+			$item_data[] = array(
+				'key'   => '- ' . __( 'Persons Count', 'wcb' ),
+				'value' => wc_clean( $cart_item_data['persons_count'] . ' ' . __( 'Person', 'wcb' ) )
+			);
+		}
+
+		if ( isset( $cart_item_data['person_price'] ) ) {
+			$max_persons   = $cart_item_data['max_persons_count'];
+			$persons_count = $cart_item_data['persons_count'];
+			$person_price  = $cart_item_data['person_price'];
+			if ( $persons_count > $max_persons ) {
+				$extra_persons = $persons_count - $max_persons;
+				$extra_price   = $person_price * $extra_persons;
+				$item_data[]   = array(
+					'key'   => '- ' . __( 'Extra Persons Price:', 'wcb' ),
+					'value' => wc_clean( $extra_price . ' ' . get_woocommerce_currency_symbol() )
+				);
+			}
+
+
+		}
+
+		return $item_data;
+	}
 }

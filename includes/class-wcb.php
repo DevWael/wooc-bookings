@@ -184,6 +184,7 @@ class Wcb {
 		$this->loader->add_filter( 'woocommerce_add_cart_item_data', $cart, 'add_cart_item_data', 10, 3 );
 		$this->loader->add_filter( 'woocommerce_add_to_cart_validation', $cart, 'validate_cart_data', 10, 4 );
 		$this->loader->add_filter( 'woocommerce_before_calculate_totals', $cart, 'calculate_cart_total', 25, 3  );
+		$this->loader->add_filter( 'woocommerce_get_item_data', $cart, 'display_cart_data', 10, 2 );
 	}
 
 	/**
