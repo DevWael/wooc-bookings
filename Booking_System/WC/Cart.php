@@ -29,11 +29,11 @@ class Cart {
 			if ( $extra_allowed ) {
 				//add new price details for cart calculations
 				$cart_item_data['person_price']      = $extra_person_price;
-				$cart_item_data['persons_count']     = $persons_count;
 				$cart_item_data['max_persons_count'] = $max_persons;
 			}
-			$cart_item_data['booking_date'] = $booking_date;
-			$cart_item_data['booking_time'] = $booking_time;
+			$cart_item_data['booking_date']  = $booking_date;
+			$cart_item_data['booking_time']  = $booking_time;
+			$cart_item_data['persons_count'] = $persons_count;
 		}
 
 		return $cart_item_data;
@@ -61,5 +61,28 @@ class Cart {
 		}
 
 		return $passed;
+	}
+
+	/**
+	 * calculate the price with selected option price
+	 *
+	 * @param $cart_obj
+	 */
+	public function calculate_cart_total( $cart_obj ) {
+		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
+			return; //disable if we are in dashboard
+		}
+		foreach ( $cart_obj->get_cart() as $key => $value ) {
+			if ( isset( $value['person_price'] ) ) {
+				$max_persons   = $value['max_persons_count'];
+				$persons_count = $value['persons_count'];
+				$person_price  = $value['person_price'];
+				if ( $persons_count > $max_persons ) {
+					$extra_persons = $persons_count - $max_persons;
+					$extra_price   = $person_price * $extra_persons;
+					$value['data']->set_price( $extra_price + $value['data']->get_price() );
+				}
+			}
+		}
 	}
 }
