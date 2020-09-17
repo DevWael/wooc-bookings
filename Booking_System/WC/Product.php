@@ -15,8 +15,14 @@ class Product {
 		$form->generate_booking_form();
 	}
 
-	public function book_now_text( $product ) {
-		return 'Book Now';
+	public function book_now_text( $default ) {
+		global $post;
+		$product = wc_get_product( $post->ID );
+		if ( get_field( 'bookable', $product->get_id() ) ) {
+			return __( 'Book Now', 'wcb' );
+		}
+
+		return $default;
 	}
 
 	function remove_quantity( $return, $product ) {
