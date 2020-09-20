@@ -53,10 +53,12 @@ class Booking_Form {
 
 	private function calendar_field() {
 		?>
-        <label for="wcd_date_picker">
-			<?php _e( 'Event Date', 'wcb' ) ?>
-        </label>
-        <input type="text" id="wcd_date_picker" class="wcd_flat_calendar" name="wcd_date">
+        <div class="wcb-datepicker">
+            <label for="wcd_date_picker">
+				<?php _e( 'Event Date', 'wcb' ) ?>
+            </label>
+            <input type="text" id="wcd_date_picker" class="wcd_flat_calendar" name="wcd_date">
+        </div>
 		<?php
 		$this->calendar_init();
 	}
@@ -104,10 +106,16 @@ class Booking_Form {
 
 	public function generate_booking_form() {
 		if ( $this->is_bookable && $this->booking_settings->is_setting_available() ) {
-			$this->persons_count_field( 'wcd_persons_count', 'wcd_persons_count' );
-			$this->product_id_field();
-			$this->calendar_field();
-			$this->time_select_field( 'wcb_time_select', 'wcb_time_select' );
+			?>
+            <div class="wcb-form">
+				<?php
+				$this->persons_count_field( 'wcd_persons_count', 'wcd_persons_count' );
+				$this->product_id_field();
+				$this->calendar_field();
+				$this->time_select_field( 'wcb_time_select', 'wcb_time_select' );
+				?>
+            </div>
+			<?php
 		}
 	}
 }

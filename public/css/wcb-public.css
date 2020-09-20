@@ -2,3 +2,27 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.wcb-form{
+    margin-bottom: 30px;
+}
+
+.wcb-form .wcb-select-time,
+.wcb-form .wcb-datepicker,
+.wcb-form .wcb-persons-number {
+    margin-bottom: 15px;
+}
+
+.wcb-form .wcb-persons-number label{
+
+}
+
+.wcb-form .wcb-datepicker input,
+.wcb-form .wcb-select-time select,
+.wcb-form .wcb-persons-number input {
+    width: 200px;
+    height: 26px;
+    display: block;
+    border-radius: 3px;
+    border: 2px solid #dedede;
+}
