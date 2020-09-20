@@ -61,6 +61,7 @@ class Booking {
 		update_field( 'booking_time', $this->booking_time, $booking_id );
 		update_field( 'persons_count', $this->persons_count, $booking_id );
 		update_field( 'booking_product_id', $this->booking_product_id, $booking_id );
+		update_post_meta( $booking_id, 'wcb_booking_order_id', $this->order_id );
 
 		$this->save_booking_to_order( $this->order_id, $booking_id );
 
