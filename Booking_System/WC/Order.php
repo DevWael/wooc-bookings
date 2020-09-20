@@ -2,6 +2,9 @@
 
 namespace Booking_System\WC;
 
+use Booking_System\Helpers;
+use Booking_System\Utilities\Booking;
+
 class Order {
 
 	/**
@@ -92,5 +95,49 @@ class Order {
 		}
 
 		return $product_name;
+	}
+
+	private function save_booking( $order_id, $booking_date, $booking_time, $persons_count, $product_id ) {
+		$booking = new Booking();
+		$booking->set_booking_date( $booking_date );
+		$booking->set_booking_time( $booking_time );
+		$booking->set_persons_count( $persons_count );
+		$booking->set_order_id( $order_id );
+		$booking->set_booking_product_id( $product_id );
+		$booking->save();
+	}
+
+	private function remove_booking( $order_id ) {
+		$booking_id = get_post_meta( $order_id, 'wcb_booking_id', true );
+		$booking    = new Booking( $booking_id );
+		$booking->set_order_id( $order_id );
+		$booking->delete_booking();
+	}
+
+	public function create_booking( $order_id, $old_status, $new_status ) {
+		if ( $new_status == 'completed' ) {
+			$order = wc_get_order( $order_id );
+			foreach ( $order->get_items() as $item_id => $item ) {
+				$product_id = $item->get_product_id();
+				if ( Helpers::is_bookable( $product_id ) ) {
+					$booking_date  = $item->get_meta( __( 'Booking Date', 'wcb' ), true );
+					$booking_time  = $item->get_meta( __( 'Booking Time', 'wcb' ), true );
+					$persons_count = $item->get_meta( __( 'Persons Count', 'wcb' ), true );
+					$this->save_booking( $order_id, $booking_date, $booking_time, $persons_count, $product_id );
+				}
+			}
+		}
+	}
+
+	public function delete_booking( $order_id, $old_status, $new_status ) {
+		if ( $new_status != 'completed' ) {
+			$order = wc_get_order( $order_id );
+			foreach ( $order->get_items() as $item_id => $item ) {
+				$product_id = $item->get_product_id();
+				if ( Helpers::is_bookable( $product_id ) ) {
+					$this->remove_booking( $order_id );
+				}
+			}
+		}
 	}
 }
