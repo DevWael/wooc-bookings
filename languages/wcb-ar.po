@@ -1,104 +1,112 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Language: \n"
+"Language: ar\n"
 "POT-Creation-Date: 2020-09-21 07:34+0000\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: Loco https://localise.biz/"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"PO-Revision-Date: 2020-09-21 07:34+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Project-Id-Version: Woocomemrce Booking System\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: العربية\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Version: 2.4.3; wp-5.3.4"
 
 #: admin/class-wcb-admin.php:107
 msgid "Booking Calendar"
-msgstr ""
+msgstr "تقويم الحجز"
 
 #: Booking_System/PostTypes/Bookings_Post_Type.php:11
 msgid "Bookings"
-msgstr ""
+msgstr "الحجوزات"
 
 #: Booking_System/PostTypes/Bookings_Post_Type.php:12
 msgid "Booking"
-msgstr ""
+msgstr "الحجز"
 
 #: Booking_System/PostTypes/Booking_Items_Post_Type.php:11
 msgid "Booking items"
-msgstr ""
+msgstr "إعدادات الحجز"
 
 #: Booking_System/PostTypes/Booking_Items_Post_Type.php:12
 msgid "Booking item"
-msgstr ""
+msgstr "عنصر الحجز"
 
 #: Booking_System/Utilities/Booking_Form.php:41
 msgid "Number of persons"
-msgstr ""
+msgstr "عدد الأشخاص"
 
 #: Booking_System/Utilities/Booking_Form.php:58
 msgid "Event Date"
-msgstr ""
+msgstr "تاريخ الحجز"
 
 #: Booking_System/Utilities/Booking_Form.php:96
 msgid "Select Time"
-msgstr ""
+msgstr "إختر الوقت"
 
 #: Booking_System/WC/Cart.php:49
 msgid "Persons count is required"
-msgstr ""
+msgstr "عدد الأشخاص مطلوب"
 
 #: Booking_System/WC/Cart.php:54
 msgid "Booking date is required"
-msgstr ""
+msgstr "تاريخ الحجز مطلوب"
 
 #: Booking_System/WC/Cart.php:59
 msgid "Booking time is required"
-msgstr ""
+msgstr "وقت الحجز مطلوب"
 
 #: Booking_System/WC/Cart.php:100 Booking_System/WC/Order.php:16
 #: Booking_System/WC/Order.php:61 Booking_System/WC/Order.php:123
 msgid "Booking Date"
-msgstr ""
+msgstr "تاريخ الحجز"
 
 #: Booking_System/WC/Cart.php:106 Booking_System/WC/Order.php:24
 #: Booking_System/WC/Order.php:69 Booking_System/WC/Order.php:124
 msgid "Booking Time"
-msgstr ""
+msgstr "وقت الحجز"
 
 #: Booking_System/WC/Cart.php:107
 msgid "PM"
-msgstr ""
+msgstr "مساء"
 
 #: Booking_System/WC/Cart.php:112 Booking_System/WC/Order.php:32
 #: Booking_System/WC/Order.php:77 Booking_System/WC/Order.php:125
 msgid "Persons Count"
-msgstr ""
+msgstr "عدد الأشخاص"
 
 #: Booking_System/WC/Cart.php:113
 msgid "Person"
-msgstr ""
+msgstr "شخص"
 
 #: Booking_System/WC/Cart.php:125 Booking_System/WC/Order.php:46
 #: Booking_System/WC/Order.php:91
 msgid "Extra Persons Price"
-msgstr ""
+msgstr "سعر الشخص الإضافى"
 
 #: Booking_System/WC/Product.php:22
 msgid "Book Now"
-msgstr ""
+msgstr "إحجز الآن"
 
 #. Name of the plugin
 msgid "Woocomemrce Booking System"
-msgstr ""
+msgstr "نظام الحجوزات للوكومرس"
 
 #. Description of the plugin
 msgid "Booking system built for woocommerce."
-msgstr ""
+msgstr "نظام حجوزات لمتاجر ووكومرس."
 
 #. URI of the plugin
 msgid "https://github.com/DevWael/wooc-bookings"
-msgstr ""
+msgstr "https://github.com/DevWael/wooc-bookings"
 
 #. Author of the plugin
 msgid "Ahmad Wael"
-msgstr ""
+msgstr "أحمد وائل"
 
 #. Author URI of the plugin
 msgid "https://github.com/DevWael"
-msgstr ""
+msgstr "https://github.com/DevWael"

@@ -67,12 +67,14 @@ class Booking_Form {
 		$allowed_days    = $this->booking_settings->get_available_days();
 		$week_days       = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
 		$disallowed_days = array_diff( $week_days, $allowed_days );
+		$position        = is_rtl() ? 'auto right' : 'auto left';
 		?>
         <script>
             (function ($) {
                 var disallowed_days = JSON.parse('<?php echo json_encode( $disallowed_days )?>');
                 $(".wcd_flat_calendar").flatpickr({
                     "minDate": 'today',
+                    'position': '<?php echo $position;?>',
                     "disable": [
                         function (date) {
                             if (date.getDay() in disallowed_days) {
@@ -96,7 +98,7 @@ class Booking_Form {
             <select name="<?php echo esc_attr( $name ) ?>" id="<?php echo esc_attr( $field_id ) ?>">
 				<?php foreach ( $allowed_hours as $allowed_hour ) { ?>
                     <option value="<?php echo esc_attr( $allowed_hour ); ?>">
-						<?php echo esc_html( $allowed_hour ); ?>
+						<?php echo esc_html( $allowed_hour ); ?>:00PM
                     </option>
 				<?php } ?>
             </select>

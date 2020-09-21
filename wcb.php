@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Woocomemrce Booking System
  * Plugin URI:        https://github.com/DevWael/wooc-bookings
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Booking system built for woocommerce.
  * Version:           1.0.0
  * Author:            Ahmad Wael
  * Author URI:        https://github.com/DevWael
